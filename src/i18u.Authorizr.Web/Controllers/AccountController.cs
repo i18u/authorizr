@@ -2,44 +2,45 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using i18u.Authorizr.Web.Models;
+using i18u.Authorizr.Web.Pipelines;
+using i18u.Authorizr.Web.Pipelines.Registration;
 using Microsoft.AspNetCore.Mvc;
 
 namespace i18u.Authorizr.Web.Controllers
 {
+    /// <summary>
+    /// The API route controller for account information.
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     public class AccountController : ControllerBase
     {
-        // GET api/values
+        /// <summary>
+        /// Retrieves some default values.
+        /// </summary>
+        /// <returns>An array containing 'value1', and 'value2'.</returns>
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {
             return new string[] { "value1", "value2" };
         }
 
-        // GET api/values/5
-        [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
-        {
-            return "value";
-        }
-
-        // POST api/values
+        /// <summary>
+        /// Create a registration entry.
+        /// </summary>
+        /// <param name="form">The registration form.</param>
+        /// <returns>The (currently) string result.</returns>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public ActionResult<string> Create([FromBody] RegistrationForm form)
         {
-        }
+            var pipeline = Pipeline
+                .Create(new ValidateFormStep())
+                .Then((email, ctx) => email);
 
-        // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
+            var pipelineContext = new PipelineContext();
 
-        // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+            return Ok(pipeline.Execute(form, pipelineContext));
         }
     }
 }
