@@ -5,7 +5,7 @@ namespace i18u.Authorizr.Web.Pipelines.Registration
     /// <summary>
     /// The step responsible for validating input from the registration form.
     /// </summary>
-    public class ValidateFormStep : PipelineStep<RegistrationForm, RegistrationForm>
+    public class ValidateFormStep : PipelineStep<RegistrationForm>
     {
         /// <inheritdoc />
         public override RegistrationForm Execute(RegistrationForm input, PipelineContext ctx)

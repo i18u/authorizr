@@ -36,7 +36,7 @@ namespace i18u.Authorizr.Web.Controllers
         {
             var pipeline = Pipeline
                 .Create(new ValidateFormStep())
-                .Then((email, ctx) => email);
+                .Then(new VerifyUniqueAccountStep());
 
             var pipelineContext = new PipelineContext();
 

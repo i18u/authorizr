@@ -1,5 +1,12 @@
 namespace i18u.Authorizr.Web.Pipelines
 {
+    /// <inheritdoc />
+    public abstract class PipelineStep<T> : IPipelineStep<T, T>
+    {
+        /// <inheritdoc />
+        public abstract T Execute(T input, PipelineContext context);
+    }
+
     /// <summary>
     /// A step in a pipeline.
     /// </summary>
