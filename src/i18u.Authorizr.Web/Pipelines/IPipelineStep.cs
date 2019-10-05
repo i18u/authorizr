@@ -8,6 +8,11 @@ namespace i18u.Authorizr.Web.Pipelines
     public interface IPipelineStep<TInput, TOutput>
     {
         /// <summary>
+        /// The name of this pipeline step.
+        /// </summary>
+        string Name { get; }
+
+        /// <summary>
         /// Executes the pipeline step, given the input and current context.
         /// </summary>
         /// <param name="input">The input for the pipeline step to operate on.</param>

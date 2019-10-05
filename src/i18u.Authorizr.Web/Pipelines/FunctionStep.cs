@@ -9,6 +9,9 @@ namespace i18u.Authorizr.Web.Pipelines
     /// <typeparam name="TOutput">The type of the output from this step.</typeparam>
     public class FunctionStep<TInput, TOutput> : PipelineStep<TInput, TOutput>
     {
+        /// <inheritdoc />
+        public override string Name => nameof(FunctionStep<TInput, TOutput>);
+
         private Func<TInput, PipelineContext, TOutput> _function;
 
         /// <summary>

@@ -8,6 +8,9 @@ namespace i18u.Authorizr.Web.Pipelines.Registration
     public class ValidateFormStep : PipelineStep<RegistrationForm>
     {
         /// <inheritdoc />
+        public override string Name => nameof(ValidateFormStep);
+
+        /// <inheritdoc />
         public override RegistrationForm Execute(RegistrationForm input, PipelineContext ctx)
         {
             if (string.IsNullOrWhiteSpace(input.EmailAddress)) 

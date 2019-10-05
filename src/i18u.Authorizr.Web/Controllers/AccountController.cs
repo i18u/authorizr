@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Net;
 using i18u.Authorizr.Web.Models;
 using i18u.Authorizr.Web.Pipelines;
 using i18u.Authorizr.Web.Pipelines.Registration;
@@ -19,11 +18,11 @@ namespace i18u.Authorizr.Web.Controllers
         /// <summary>
         /// Retrieves some default values.
         /// </summary>
-        /// <returns>An array containing 'value1', and 'value2'.</returns>
-        [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        /// <returns>The matching <see cref="Account"/> object.</returns>
+        [HttpGet("{email}")]
+        public ActionResult<IEnumerable<Account>> Get(string email)
         {
-            return new string[] { "value1", "value2" };
+            return Ok(Account.Get(email));
         }
 
         /// <summary>
@@ -32,15 +31,34 @@ namespace i18u.Authorizr.Web.Controllers
         /// <param name="form">The registration form.</param>
         /// <returns>The (currently) string result.</returns>
         [HttpPost]
-        public ActionResult<string> Create([FromBody] RegistrationForm form)
+        public ActionResult<RegistrationResult> Create([FromBody] RegistrationForm form)
         {
             var pipeline = Pipeline
                 .Create(new ValidateFormStep())
-                .Then(new VerifyUniqueAccountStep());
+                .Then(new VerifyUniqueAccountStep())
+                .Then(new CreateAccountObjectStep())
+                .Then(new ProvisionAccountStep())
+                .Then(new SendVerificationEmailStep());
 
             var pipelineContext = new PipelineContext();
+            RegistrationResult result = null;
 
-            return Ok(pipeline.Execute(form, pipelineContext));
+            try 
+            {
+                result = pipeline.Execute(form, pipelineContext);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Something went terribly, terribly wrong: {ex}");
+            }
+
+            if (result == null)
+            {
+                Console.WriteLine("Something failed.");
+                return StatusCode((int)HttpStatusCode.InternalServerError);
+            }
+
+            return Ok(result);
         }
     }
 }

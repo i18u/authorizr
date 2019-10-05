@@ -1,4 +1,6 @@
+using System.Linq;
 using i18u.Authorizr.Web.Models;
+using i18u.Authorizr.Web.Util;
 
 namespace i18u.Authorizr.Web.Pipelines.Registration
 {
@@ -7,9 +9,12 @@ namespace i18u.Authorizr.Web.Pipelines.Registration
     /// </summary>
     public class VerifyUniqueAccountStep : PipelineStep<RegistrationForm>
     {
-        private object GetAccount(string email)
+        /// <inheritdoc />
+        public override string Name => nameof(VerifyUniqueAccountStep);
+
+        private Account GetAccount(string email)
         {
-            return default;
+            return Account.Get(email);
         }
 
         /// <inheritdoc />

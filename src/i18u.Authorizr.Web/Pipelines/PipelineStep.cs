@@ -1,10 +1,8 @@
 namespace i18u.Authorizr.Web.Pipelines
 {
     /// <inheritdoc />
-    public abstract class PipelineStep<T> : IPipelineStep<T, T>
+    public abstract class PipelineStep<T> : PipelineStep<T, T>, IPipelineStep<T, T>
     {
-        /// <inheritdoc />
-        public abstract T Execute(T input, PipelineContext context);
     }
 
     /// <summary>
@@ -14,6 +12,11 @@ namespace i18u.Authorizr.Web.Pipelines
     /// <typeparam name="TOutput">The type of the output for this step.</typeparam>
     public abstract class PipelineStep<TInput, TOutput> : IPipelineStep<TInput, TOutput>
     {
+        /// <summary>
+        /// The name of this pipeline step.
+        /// </summary>
+        public abstract string Name { get; }
+
         /// <inheritdoc />
         public abstract TOutput Execute(TInput input, PipelineContext ctx);
     }

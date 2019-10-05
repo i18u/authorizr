@@ -101,6 +101,13 @@ namespace i18u.Authorizr.Web.Pipelines
         protected override TOutput ExecuteSubPipeline(TInput input, PipelineContext ctx)
         {
             var previousPipelineResult = _previousPipeline.Execute(input, ctx);
+
+            if (!ctx.Success)
+            {
+                Console.WriteLine($"The pipeline step before {CurrentStep.Name} failed.");
+                return default;
+            }
+
             return CurrentStep.Execute(previousPipelineResult, ctx);
         }
     }
