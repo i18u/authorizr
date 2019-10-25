@@ -38,6 +38,12 @@ namespace i18u.Authorizr.Web.Models
 
             var matchingAccounts = Repository.Get(filterDefinition);
 
+            if (matchingAccounts == null)
+            {
+                // todo: log
+                return default;
+            }
+
             if (matchingAccounts.Count() > 1)
             {
                 // todo: log
