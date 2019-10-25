@@ -5,6 +5,7 @@ namespace i18u.Authorizr.Web.Models
     /// <summary>
     /// Represents the result of attempting to register.
     /// </summary>
+    [DataContract]
     public class RegistrationResult
     {
         /// <summary>
