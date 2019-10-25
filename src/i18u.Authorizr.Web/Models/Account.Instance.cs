@@ -57,7 +57,6 @@ namespace i18u.Authorizr.Web.Models
         {
             EmailAddress = emailAddress;
             PasswordHash = passwordHash;
-            Archived = false;
         }
 
         /// <summary>
@@ -65,6 +64,7 @@ namespace i18u.Authorizr.Web.Models
         /// </summary>
         public Account()
         {
+            Archived = false;
         }
     }
 }
