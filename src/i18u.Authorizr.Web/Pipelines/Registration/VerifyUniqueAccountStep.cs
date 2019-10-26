@@ -20,6 +20,14 @@ namespace i18u.Authorizr.Web.Pipelines.Registration
         /// <inheritdoc />
         public override RegistrationForm Execute(RegistrationForm input, PipelineContext context)
         {
+			if (input == null)
+			{
+				context.Success = false;
+				context.Log($"Input of type {nameof(RegistrationForm)} was null.");
+                
+                return input;
+			}
+
             var user = GetAccount(input.EmailAddress);
 
             if (user != null)
