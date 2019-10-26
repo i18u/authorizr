@@ -10,7 +10,7 @@ namespace i18u.Authorizr.Web.Pipelines
     public class FunctionStep<TInput, TOutput> : PipelineStep<TInput, TOutput>
     {
         /// <inheritdoc />
-        public override string Name => nameof(FunctionStep<TInput, TOutput>);
+        public override string Name => $"FunctionStep<{typeof(TInput).Name}, {typeof(TOutput).Name}>";
 
         private Func<TInput, PipelineContext, TOutput> _function;
 
@@ -33,8 +33,10 @@ namespace i18u.Authorizr.Web.Pipelines
             } 
             catch (Exception ex)
             {
-                ctx.Log(ex);
+                // Leave in this order in case `Log` fails
                 ctx.Success = false;
+                ctx.Log(ex);
+
                 return default;
             }
         }
