@@ -53,6 +53,11 @@ namespace i18u.Authorizr.Web.Transform
         /// <returns>The generated <see cref="Account"/> object.</returns>
         public Account Generate(RegistrationForm form)
         {
+			if (form == null)
+			{
+				return default;
+			}
+
             var email = form.EmailAddress;
             var password = form.Password;
 
