@@ -14,6 +14,13 @@ namespace i18u.Authorizr.Web.Pipelines.Registration
         /// <inheritdoc />
         public override Account Execute(Account input, PipelineContext ctx)
         {
+			if (input == null)
+			{
+				ctx.Success = false;
+				ctx.Log("Account object was null - nothing to insert.");
+				return input;
+			}
+
             var repo = Mongo.GetRepository<Account>(Account.Database, Account.Collection);
             var result = repo.Insert(input);
 
