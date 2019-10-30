@@ -94,17 +94,7 @@ namespace i18u.Authorizr.Core.Util
                 return default;
             }
 
-            int count = collection.Count();
-
-            // If the number of items is greater than the index, the index will
-            // be within bounds. If they are equal, the index will point at just
-            // outside the collection.
-            if (count > index)
-            {
-                return collection.ElementAt(index);
-            }
-
-            return default;
+            return collection.ElementAtOrDefault(index);
         }
 
         /// <summary>
