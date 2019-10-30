@@ -1,0 +1,21 @@
+version: '3'
+services:
+  api:
+    build: "."
+    ports:
+      - "5001:80"
+      - "5002:5000"
+    environment:
+      MONGO_HOST: mongo
+      MONGO_PORT: 27017
+      MONGO_USER: root
+      MONGO_PASS: test123
+      SENDGRID_API_KEY: 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
+  mongo:
+    image: mongo:latest
+    restart: always
+    ports:
+      - 27017:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: test123

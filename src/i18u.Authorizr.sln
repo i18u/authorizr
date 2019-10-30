@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "i18u.Authorizr.Core", "i18u
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "i18u.Authorizr.Web", "i18u.Authorizr.Web\i18u.Authorizr.Web.csproj", "{C577BB41-F428-4DDD-988D-FB791F3F343B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "i18u.Authorizr.Tests", "i18u.Authorizr.Tests\i18u.Authorizr.Tests.csproj", "{3AAE5E13-7E2F-4A22-AAA4-372E2025A2EC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,5 +46,17 @@ Global
 		{C577BB41-F428-4DDD-988D-FB791F3F343B}.Release|x64.Build.0 = Release|Any CPU
 		{C577BB41-F428-4DDD-988D-FB791F3F343B}.Release|x86.ActiveCfg = Release|Any CPU
 		{C577BB41-F428-4DDD-988D-FB791F3F343B}.Release|x86.Build.0 = Release|Any CPU
+		{3AAE5E13-7E2F-4A22-AAA4-372E2025A2EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3AAE5E13-7E2F-4A22-AAA4-372E2025A2EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3AAE5E13-7E2F-4A22-AAA4-372E2025A2EC}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{3AAE5E13-7E2F-4A22-AAA4-372E2025A2EC}.Debug|x64.Build.0 = Debug|Any CPU
+		{3AAE5E13-7E2F-4A22-AAA4-372E2025A2EC}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{3AAE5E13-7E2F-4A22-AAA4-372E2025A2EC}.Debug|x86.Build.0 = Debug|Any CPU
+		{3AAE5E13-7E2F-4A22-AAA4-372E2025A2EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3AAE5E13-7E2F-4A22-AAA4-372E2025A2EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3AAE5E13-7E2F-4A22-AAA4-372E2025A2EC}.Release|x64.ActiveCfg = Release|Any CPU
+		{3AAE5E13-7E2F-4A22-AAA4-372E2025A2EC}.Release|x64.Build.0 = Release|Any CPU
+		{3AAE5E13-7E2F-4A22-AAA4-372E2025A2EC}.Release|x86.ActiveCfg = Release|Any CPU
+		{3AAE5E13-7E2F-4A22-AAA4-372E2025A2EC}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
