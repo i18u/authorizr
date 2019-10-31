@@ -1,0 +1,8 @@
+language: csharp
+mono: none
+dotnet: none
+services:
+  - docker
+
+script:
+  - docker build .
