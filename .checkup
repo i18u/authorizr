@@ -1,2 +1,9 @@
-Test=0.1
-Test2=0.2
+[Code Stability]
+Robustness=0.8
+Maintainability=0.8
+Maturity=0.5
+
+[Extensibility]
+Patterns=0.9
+Flexibility=0.5
+Performance=0.7
