@@ -1,9 +1,9 @@
 [Code Stability]
-Robustness=0.8
-Maintainability=0.8
+Robustness=0.9
+Maintainability=0.7
 Maturity=0.5
 
 [Extensibility]
-Patterns=0.9
+Patterns=0.6
 Flexibility=0.5
-Performance=0.7
+Performance=0.5
